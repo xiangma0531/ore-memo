@@ -1,4 +1,6 @@
 class MemosController < ApplicationController
+  before_action :set_memo, only: [:show]
+
   def index
     @memos = Memo.all
   end
@@ -16,8 +18,15 @@ class MemosController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
   def memo_params
     params.require(:memo).permit(:title, :content).merge(user_id: current_user.id)
+  end
+
+  def set_memo
+    @memo = Memo.find(params[:id])
   end
 end
