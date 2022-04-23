@@ -1,3 +1,8 @@
+<% if current_user.id == @memo.user.id %>
+  <div>
+    <p><%= link_to '編集', edit_memo_path %></p>
+</div>
+<% end %>
 <table>
   <tr>
     <th>タイトル</th>
