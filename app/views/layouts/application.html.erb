@@ -10,6 +10,16 @@
   </head>
 
   <body>
+    <header>
+      <h2>俺のメモ帳</h2>
+      <% if user_signed_in? %>
+        <p>新規メモ作成</p>
+        <p><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p>
+      <% else %>
+        <p><%= link_to '新規登録', new_user_registration_path %></p>
+        <p><%= link_to 'ログイン', new_user_session_path %></p>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
