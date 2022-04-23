@@ -1,6 +1,6 @@
 class MemosController < ApplicationController
   def index
-    @memos = Memo.includes(:user).find_by(user_id: current_user.id)
+    @memos = Memo.all
   end
 
   def new
