@@ -11,7 +11,7 @@
 
   <body>
     <header>
-      <h2>俺のメモ帳</h2>
+      <h2><%= link_to '俺のメモ帳', root_path %></h2>
       <% if user_signed_in? %>
         <p><%= current_user.name %></p>
         <p><%= link_to '新規メモ作成', new_memo_path %></p>
