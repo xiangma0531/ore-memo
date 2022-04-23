@@ -3,4 +3,5 @@ class Memo < ApplicationRecord
     validates :title
     validates :content
   end
+  belongs_to :user
 end

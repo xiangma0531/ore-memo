@@ -1,5 +1,5 @@
 class MemosController < ApplicationController
-  before_action :set_memo, only: [:show]
+  before_action :set_memo, only: [:show, :edit, :update]
 
   def index
     @memos = Memo.all
@@ -19,6 +19,17 @@ class MemosController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @memo.update(memo_params)
+      redirect_to memo_path(@memo.id)
+    else
+      render :edit
+    end
   end
 
   private
