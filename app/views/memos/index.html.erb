@@ -1,6 +1,10 @@
-<% @memos.each do |memo| %>
-  <div>
-    <p><%= link_to memo.title, memo_path(memo.id) %></p>
-    <p><%= memo.created_at %></p>
-  </div>
+<% if user_signed_in? %>
+  <% @memos.each do |memo| %>
+    <div>
+      <p><%= link_to memo.title, memo_path(memo.id) %></p>
+      <p><%= l memo.created_at %></p>
+    </div>
+  <% end %>
+<% else %>
+  ※※※ 上のボタンから新規登録・ログインしてください。 ※※※
 <% end %>

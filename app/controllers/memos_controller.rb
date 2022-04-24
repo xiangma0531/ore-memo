@@ -2,7 +2,9 @@ class MemosController < ApplicationController
   before_action :set_memo, only: [:show, :edit, :update]
 
   def index
-    @memos = Memo.all
+    if user_signed_in?
+      @memos = current_user.memos.order("created_at DESC")
+    end
   end
 
   def new
