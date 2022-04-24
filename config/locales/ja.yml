@@ -1,0 +1,11 @@
+ja:
+  time: 
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+  activerecord:
+    attributes:
+      user:
+        name: ユーザー名
+      memo:
+        title: タイトル
+        content: 内容
