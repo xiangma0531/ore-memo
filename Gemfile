@@ -60,3 +60,6 @@ gem 'data-confirm-modal'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'rails-i18n'
+
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
