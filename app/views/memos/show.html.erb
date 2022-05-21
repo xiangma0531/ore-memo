@@ -17,7 +17,7 @@
     <th>メモ内容</th>
     <td><%= @memo.content %></td>
   </tr>
-  <% if @message.image.atttached? %>
+  <% if @memo.image.attached? %>
     <tr>
       <th>メモ画像</th>
       <td><%= image_tag @memo.image.variant(resize: '500x500') %></td>
