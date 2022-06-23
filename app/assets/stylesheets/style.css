@@ -8,3 +8,72 @@
   list-style: none;
   color: inherit;
 }
+.btn{
+  border: 1px solid #666;
+  border-radius: 5px;
+  overflow: hidden;
+  font-weight: bold;
+  padding: 1%;
+}
+.grid{
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin: 0 auto;
+  background-color: white;
+}
+
+/*
+ヘッダー
+*/
+.header{
+  height: 10vh;
+  width: 100vw;
+  background-color: #00ffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+}
+.header-left-box{
+  font-weight: bold;
+  width: 60%;
+}
+.header-right-box{
+  width: 40%;
+  display: flex;
+  justify-content: space-around;  
+}
+.header-btn{
+  width: auto;
+}
+.user-name{
+  padding: 1%;
+  font-weight: bold;
+}
+.session-btn{
+  background-color: #7fffd4;
+}
+.logout{
+  background-color: white;
+}
+
+/*
+新規メモ作成ボタン
+*/
+.main{
+  
+}
+.new-memo-btn{
+  display: block;
+  text-align: right;
+  margin-top: auto;
+  border: none;
+  border-radius: 50%;
+  overflow: hidden;
+  font-size: large;
+  font-weight: bold;
+  padding: 1%;
+  background-color: #00ffff;
+  color: white;
+}
