@@ -95,3 +95,19 @@
 .memo-bottom{
   text-align: right;
 }
+
+/*
+メモ(詳細)
+*/
+.memo-btns{
+  display: flex;
+  justify-content: space-around;
+  width: 20%;
+  margin: 0 0 0 auto;
+}
+.memo-edit-btn{
+  background-color: #00ffff;
+}
+.memo-created-at{
+  text-align: right;
+}
