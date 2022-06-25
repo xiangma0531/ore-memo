@@ -62,7 +62,7 @@
 新規メモ作成ボタン
 */
 .main{
-  
+  width: 100%;
 }
 .new-memo-btn{
   display: block;
@@ -76,4 +76,22 @@
   padding: 1%;
   background-color: #00ffff;
   color: white;
+}
+
+/*
+メモ(一覧)
+*/
+.memo{
+  width: 80%;
+  border: 1px solid #666;
+  margin: 5% auto;
+  padding: 1%;
+}
+.memo-upper{}
+.memo-title{
+  font-weight: bold;
+  font-size: larger;
+}
+.memo-bottom{
+  text-align: right;
 }
