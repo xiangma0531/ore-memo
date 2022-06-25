@@ -37,8 +37,10 @@
       <div class="main">
       <%= yield %>
       </div>
-      <%= link_to new_memo_path, class: "new-memo-btn" do %>
-        +
+      <% if user_signed_in? %>
+        <%= link_to new_memo_path, class: "new-memo-btn" do %>
+          +
+        <% end %>
       <% end %>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
