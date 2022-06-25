@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
   <h2>今までのメモ</h2>
-  <% @memos.each do |memo| %>
+  <div class="memos-area">
+    <% @memos.each do |memo| %>
     <div class="memo">
       <div class="memo-upper">
         <span class="memo-title"><%= link_to memo.title, memo_path(memo.id) %></span>
@@ -11,6 +12,7 @@
       </div>
     </div>
   <% end %>
+  </div>
 <% else %>
   ※※※ 上のボタンから新規登録・ログインしてください。 ※※※
 <% end %>

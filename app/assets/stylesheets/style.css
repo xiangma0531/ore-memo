@@ -114,11 +114,18 @@ input,select{
 /*
 メモ(一覧)
 */
-.memo{
+.memos-area{
   width: 80%;
+  overflow: scroll;
+  margin: 0 auto;
+}
+.memo{
+  width: 100%;
   border: 1px solid #666;
   margin: 5% auto;
   padding: 1%;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .memo-title{
   font-weight: bold;
@@ -137,7 +144,7 @@ input,select{
   width: 20%;
   margin: 0 0 0 auto;
 }
-.memo-edit-btn{
+.memo-edit-btn,.memo-btn{
   background-color: #00ffff;
 }
 .memo-created-at{
