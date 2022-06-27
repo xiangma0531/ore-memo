@@ -18,17 +18,25 @@
             <%= current_user.name %>
           </li>
           <li class="session-btn header-btn btn">
-            <%= link_to 'ユーザー情報編集', edit_user_registration_path %>
+            <%= link_to edit_user_registration_path do %>
+              ユーザー情報編集
+            <% end %>
           </li>
           <li class="logout header-btn btn">
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              ログアウト
+            <% end %>
           </li>
         <% else %>
           <li class="session-btn header-btn btn">
-            <%= link_to '新規登録', new_user_registration_path %>
+            <%= link_to new_user_registration_path do %>
+              新規登録
+            <% end %>
           </li>
           <li class="session-btn header-btn btn">
-            <%= link_to 'ログイン', new_user_session_path %>
+            <%= link_to new_user_session_path do %>
+              ログイン
+            <% end %>
           </li>
         <% end %>
       </ul>

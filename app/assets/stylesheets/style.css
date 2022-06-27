@@ -70,19 +70,19 @@ input,select{
 }
 .header-left-box{
   font-weight: bold;
-  width: 60%;
+  width: 40%;
 }
 .header-right-box{
-  width: 40%;
+  width: 60%;
   display: flex;
   justify-content: space-around;  
 }
 .header-btn{
   width: auto;
+  font-size: small;
 }
 .user-name{
   padding: 1%;
-  font-weight: bold;
 }
 .session-btn{
   background-color: #7fffd4;
@@ -96,6 +96,7 @@ input,select{
 */
 .main{
   width: 100%;
+  height: 90vh;
 }
 .right-btn{
   width: 5vw;
