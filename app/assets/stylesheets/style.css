@@ -97,10 +97,18 @@ input,select{
 .main{
   width: 100%;
 }
+.right-btn{
+  width: 5vw;
+  height: 5vh;
+  margin: auto 0;
+  align-items: center;
+}
 .new-memo-btn{
+  width: 100%;
+  height: 100%;
   display: block;
-  text-align: right;
-  margin-top: auto;
+  text-align: center;
+  margin: auto 0;
   border: none;
   border-radius: 50%;
   overflow: hidden;
@@ -116,6 +124,7 @@ input,select{
 */
 .memos-area{
   width: 80%;
+  height: 90vh;
   overflow: scroll;
   margin: 0 auto;
 }
