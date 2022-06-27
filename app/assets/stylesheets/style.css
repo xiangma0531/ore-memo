@@ -97,6 +97,8 @@ input,select{
 .main{
   width: 100%;
   height: 90vh;
+  overflow: scroll;
+  margin: 0 auto;
 }
 .right-btn{
   width: 5vw;
@@ -126,7 +128,6 @@ input,select{
 .memos-area{
   width: 80%;
   height: 90vh;
-  overflow: scroll;
   margin: 0 auto;
 }
 .memo{
