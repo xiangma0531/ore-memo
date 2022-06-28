@@ -1,26 +1,24 @@
-<% if current_user.id == @memo.user.id %>
-  <div>
-    <p><%= link_to '編集', edit_memo_path, class: "btn btn-success" %></p>
-    <p><%= link_to '削除', memo_path(@memo.id), method: :delete, data: {confirm: '削除します。よろしいですか？', cancel: 'キャンセル', commit: '削除する'}, title: '削除確認', class: "btn" %></p>
-</div>
-<% end %>
-<table>
-  <tr>
-    <th>タイトル</th>
-    <td><%= @memo.title %></td>
-  </tr>
-  <tr>
-    <th>作成日時</th>
-    <td><%= l @memo.created_at %></td>
-  </tr>
-  <tr>
-    <th>メモ内容</th>
-    <td><%= @memo.content %></td>
-  </tr>
-  <% if @memo.image.attached? %>
-    <tr>
-      <th>メモ画像</th>
-      <td><%= image_tag @memo.image.variant(resize: '500x500') %></td>
-    </tr>
+<div class="memo-headline">
+  <h2><%= @memo.title %></h2>
+  <div class="memo-created-at"><%= l @memo.created_at %></div>
+  <% if current_user.id == @memo.user.id %>
+    <div class="memo-btns">
+      <div class="memo-edit-btn btn">
+        <%= link_to '編集', edit_memo_path %>
+      </div>
+      <div class="memo-delete-btn btn">
+        <%= link_to '削除', memo_path(@memo.id), method: :delete, data: {confirm: '削除します。よろしいですか？', cancel: 'キャンセル', commit: '削除する'}, title: '削除確認' %>
+      </div>
+    </div>
   <% end %>
-</table>
+</div>
+<hr>
+<div class="memo-detail">
+  <%= @memo.content %>
+  <div class="memo-image">
+    <% if @memo.image.attached? %>
+      <hr>
+      <%= image_tag @memo.image.variant(resize: '500x500') %>
+    <% end %>
+  </div>
+</div>  

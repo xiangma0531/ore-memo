@@ -1,0 +1,163 @@
+@charset "utf-8";
+
+/*
+グローバル
+*/
+*{
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+}
+h1,h2,h3,h4,h5,h6{
+  padding: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+/* 入力系 */
+.form-box{
+  border: 1px solid #666;
+  padding: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: white;
+}
+.field{
+  width: 100%;
+  margin: 1% auto 0;
+}
+input,select{
+  width: 50%;
+  padding: 5px;
+}
+.actions{
+  margin-top: 5%;
+}
+.btn{
+  width: 15%;
+  border: 1px solid #666;
+  border-radius: 5px;
+  overflow: hidden;
+  font-weight: bold;
+  padding: 1%;
+}
+.grid{
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin: 0 auto;
+  background-color: white;
+}
+
+/*
+ログイン
+*/
+#user_remember_me{
+  width: auto;
+}
+
+/*
+ヘッダー
+*/
+.header{
+  height: 10vh;
+  width: 100vw;
+  background-color: #00ffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+}
+.header-left-box{
+  font-weight: bold;
+  width: 40%;
+}
+.header-right-box{
+  width: 60%;
+  display: flex;
+  justify-content: space-around;  
+}
+.header-btn{
+  width: auto;
+  font-size: small;
+}
+.user-name{
+  padding: 1%;
+}
+.session-btn{
+  background-color: #7fffd4;
+}
+.logout{
+  background-color: white;
+}
+
+/*
+新規メモ作成ボタン
+*/
+.main{
+  width: 100%;
+  height: 90vh;
+  overflow: scroll;
+  margin: 0 auto;
+}
+.right-btn{
+  width: 5vw;
+  height: 5vh;
+  margin: auto 0;
+  align-items: center;
+}
+.new-memo-btn{
+  width: 100%;
+  height: 100%;
+  display: block;
+  text-align: center;
+  margin: auto 0;
+  border: none;
+  border-radius: 50%;
+  overflow: hidden;
+  font-size: large;
+  font-weight: bold;
+  padding: 1%;
+  background-color: #00ffff;
+  color: white;
+}
+
+/*
+メモ(一覧)
+*/
+.memos-area{
+  width: 80%;
+  height: 90vh;
+  margin: 0 auto;
+}
+.memo{
+  width: 100%;
+  border: 1px solid #666;
+  margin: 5% auto;
+  padding: 1%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.memo-title{
+  font-weight: bold;
+  font-size: larger;
+}
+.memo-bottom{
+  text-align: right;
+}
+
+/*
+メモ(詳細)
+*/
+.memo-btns{
+  display: flex;
+  justify-content: space-around;
+  width: 20%;
+  margin: 0 0 0 auto;
+}
+.memo-edit-btn,.memo-btn{
+  background-color: #00ffff;
+}
+.memo-created-at{
+  text-align: right;
+}

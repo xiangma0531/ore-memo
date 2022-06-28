@@ -1,21 +1,23 @@
-<%= form_with(model: @memo, local: true) do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title, autofucus: true %>
-  </div>
+<div class="form-box">
+  <%= form_with(model: @memo, local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title, autofucus: true %>
+    </div>
 
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content, rows: "5" %>
-  </div>
+    <div class="field">
+      <%= f.label :content %><br />
+      <%= f.text_area :content, cols: "50", rows: "5" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.file_field :image %>
-  </div>
+    <div class="field">
+      <%= f.label :image %><br />
+      <%= f.file_field :image %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "更新" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "更 新", class: "btn memo-btn" %>
+    </div>
+  <% end %>
+</div>

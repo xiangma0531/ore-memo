@@ -1,10 +1,18 @@
 <% if user_signed_in? %>
-  <% @memos.each do |memo| %>
-    <div>
-      <p><%= link_to memo.title, memo_path(memo.id) %></p>
-      <p><%= l memo.created_at %></p>
-    </div>
-  <% end %>
+  <h2>今までのメモ</h2>
+  <div class="memos-area">
+    <% @memos.each do |memo| %>
+      <div class="memo">
+        <div class="memo-upper">
+          <span class="memo-title"><%= link_to memo.title, memo_path(memo.id) %></span>
+        </div>
+        <hr>
+        <div class="memo-bottom">
+          <%= l memo.created_at %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% else %>
   ※※※ 上のボタンから新規登録・ログインしてください。 ※※※
 <% end %>

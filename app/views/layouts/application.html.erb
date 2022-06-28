@@ -4,27 +4,57 @@
     <title>OreMemo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <%# <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"> %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header class="header">
+      <h2 class="header-left-box"><%= link_to '俺のメモ帳', root_path %></h2>
+      <ul class="header-right-box">
+        <% if user_signed_in? %>
+          <li class="user-name header-btn">
+            <%= current_user.name %>
+          </li>
+          <li class="session-btn header-btn btn">
+            <%= link_to edit_user_registration_path do %>
+              ユーザー情報編集
+            <% end %>
+          </li>
+          <li class="logout header-btn btn">
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              ログアウト
+            <% end %>
+          </li>
+        <% else %>
+          <li class="session-btn header-btn btn">
+            <%= link_to new_user_registration_path do %>
+              新規登録
+            <% end %>
+          </li>
+          <li class="session-btn header-btn btn">
+            <%= link_to new_user_session_path do %>
+              ログイン
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </header>
+    <div class="grid grid-col2">
+      <div class="main">
+      <%= yield %>
+      </div>
+      <div class="right-btn">
+        <% if user_signed_in? %>
+          <%= link_to new_memo_path, class: "new-memo-btn" do %>
+            +
+          <% end %>
+        <% end %>
+      </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    <header>
-      <h2><%= link_to '俺のメモ帳', root_path %></h2>
-      <% if user_signed_in? %>
-        <p><%= current_user.name %></p>
-        <p><%= link_to '新規メモ作成', new_memo_path %></p>
-        <p><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p>
-        <p><%= link_to 'ユーザー情報編集', edit_user_registration_path %>
-      <% else %>
-        <p><%= link_to '新規登録', new_user_registration_path %></p>
-        <p><%= link_to 'ログイン', new_user_session_path %></p>
-      <% end %>
-    </header>
-    <%= yield %>
   </body>
 </html>
