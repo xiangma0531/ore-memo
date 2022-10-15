@@ -50,6 +50,6 @@ test:
 production:
   <<: *default
   database: ore_memo_production
-  username: root
+  username: orememo_admin
   password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
