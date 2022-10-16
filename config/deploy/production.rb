@@ -59,3 +59,4 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+server 'ore-no-memocho.com', user: 'ec2-user', roles: %w{app db web}
