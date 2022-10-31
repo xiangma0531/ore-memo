@@ -173,3 +173,56 @@ a {
 .memo-created-at{
   text-align: right;
 }
+
+/*
+モーダルCSS
+*/
+#openModal{
+  cursor: pointer;
+}
+
+.modalArea {
+  display: none;
+  position: fixed;
+  z-index: 10; /*サイトによってここの数値は調整 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modalBg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30,30,30,0.9);
+}
+
+.modalWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+  width: 70%;
+  max-width: 500px;
+  padding: 10px 30px;
+  background-color: #fff;
+}
+
+.modal-btns{
+  width: 100%;
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-btn{
+  width: auto;
+  color: #666;
+}
+
+.modal-del-btn{
+  display: block;
+  width: auto;
+  color: white;
+  background-color: #666;
+}
