@@ -4,6 +4,7 @@
     <title>俺のメモ帳</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%# <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"> %>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,30 +13,31 @@
 
   <body>
     <header class="header">
-      <h2 class="header-left-box"><%= link_to '俺のメモ帳', root_path %></h2>
+      <div class="header-left-box"><%= link_to '俺のメモ帳', root_path %></div>
       <ul class="header-right-box">
         <% if user_signed_in? %>
-          <li class="user-name header-btn">
-            <%= current_user.name %>
-          </li>
           <li class="session-btn header-btn btn">
             <%= link_to edit_user_registration_path do %>
-              ユーザー情報編集
+              <%= image_tag 'post.png', class: "header-icon" %><br />
+              <%= current_user.name %>
             <% end %>
           </li>
           <li class="logout header-btn btn">
             <%= link_to destroy_user_session_path, method: :delete do %>
+              <%= image_tag 'login.png', class: "header-icon" %><br />
               ログアウト
             <% end %>
           </li>
         <% else %>
           <li class="session-btn header-btn btn">
             <%= link_to new_user_registration_path do %>
+              <%= image_tag 'registration.png', class: "header-icon" %><br />
               新規登録
             <% end %>
           </li>
           <li class="session-btn header-btn btn">
             <%= link_to new_user_session_path do %>
+              <%= image_tag 'login.png', class: "header-icon" %><br />
               ログイン
             <% end %>
           </li>

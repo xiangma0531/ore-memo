@@ -35,7 +35,7 @@ input,select{
 }
 .btn{
   width: 15%;
-  color: white;
+  color: #666;
   border: 1px solid #666;
   border-radius: 5px;
   overflow: hidden;
@@ -84,6 +84,7 @@ a {
 .header-btn{
   width: auto;
   font-size: small;
+  text-align: center;
 }
 .user-name{
   padding: 1%;
@@ -145,7 +146,6 @@ a {
 }
 .memo-title{
   font-weight: bold;
-  font-size: larger;
 }
 
 .memo-title > a{
@@ -154,6 +154,7 @@ a {
 
 .memo-bottom{
   text-align: right;
+  font-size: small;
 }
 
 /*
@@ -225,4 +226,25 @@ a {
   width: auto;
   color: white;
   background-color: #666;
+}
+
+/* 
+レスポンシブ設定
+*/
+/* タブレット */
+@media (max-width: 1024px) {
+
+}
+
+/* スマホ */
+@media (max-width: 599px) {
+  .new-memo-btn{
+    width: 50px;
+    height: 50px;
+  }
+
+  .header-btn{
+    width: auto;
+    font-size: 11px;
+  }
 }
