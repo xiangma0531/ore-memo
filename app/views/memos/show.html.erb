@@ -6,8 +6,8 @@
       <div class="memo-edit-btn btn">
         <%= link_to '編集', edit_memo_path %>
       </div>
-      <div class="memo-delete-btn btn">
-        <%= link_to '削除', memo_path(@memo.id), method: :delete, data: {confirm: '削除します。よろしいですか？', cancel: 'キャンセル', commit: '削除する'}, title: '削除確認' %>
+      <div id="openModal" class="btn memo-delete-btn">
+        削除
       </div>
     </div>
   <% end %>
@@ -21,4 +21,24 @@
       <%= image_tag @memo.image.variant(resize: '500x500') %>
     <% end %>
   </div>
-</div>  
+</div>
+
+<%# 削除確認モーダルウィンドウ %>
+  <section id="modalArea" class="modalArea">
+    <div id="modalBg" class="modalBg"></div>
+    <div class="modalWrapper">
+      <div class="modalContents">
+        このメモを削除します。<br />
+        よろしいですか？
+      </div>
+      <div class="modal-btns">
+        <%= link_to memo_path(@memo.id), class: "btn modal-del-btn", method: :delete do %>
+          削除する
+        <% end %>
+        <div id="closeModal" class="btn modal-btn">
+          キャンセル
+        </div>
+      </div>
+    </div>
+  </section>
+<%# 削除確認モーダルウィンドウ %>

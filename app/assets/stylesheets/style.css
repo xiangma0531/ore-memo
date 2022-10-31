@@ -35,7 +35,7 @@ input,select{
 }
 .btn{
   width: 15%;
-  color: white;
+  color: #666;
   border: 1px solid #666;
   border-radius: 5px;
   overflow: hidden;
@@ -84,6 +84,7 @@ a {
 .header-btn{
   width: auto;
   font-size: small;
+  text-align: center;
 }
 .user-name{
   padding: 1%;
@@ -145,7 +146,6 @@ a {
 }
 .memo-title{
   font-weight: bold;
-  font-size: larger;
 }
 
 .memo-title > a{
@@ -154,6 +154,7 @@ a {
 
 .memo-bottom{
   text-align: right;
+  font-size: small;
 }
 
 /*
@@ -172,4 +173,78 @@ a {
 }
 .memo-created-at{
   text-align: right;
+}
+
+/*
+モーダルCSS
+*/
+#openModal{
+  cursor: pointer;
+}
+
+.modalArea {
+  display: none;
+  position: fixed;
+  z-index: 10; /*サイトによってここの数値は調整 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modalBg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30,30,30,0.9);
+}
+
+.modalWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+  width: 70%;
+  max-width: 500px;
+  padding: 10px 30px;
+  background-color: #fff;
+}
+
+.modal-btns{
+  width: 100%;
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-btn{
+  width: auto;
+  color: #666;
+}
+
+.modal-del-btn{
+  display: block;
+  width: auto;
+  color: white;
+  background-color: #666;
+}
+
+/* 
+レスポンシブ設定
+*/
+/* タブレット */
+@media (max-width: 1024px) {
+
+}
+
+/* スマホ */
+@media (max-width: 599px) {
+  .new-memo-btn{
+    width: 50px;
+    height: 50px;
+  }
+
+  .header-btn{
+    width: auto;
+    font-size: 11px;
+  }
 }
