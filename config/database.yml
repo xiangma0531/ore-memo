@@ -49,8 +49,8 @@ test:
 #
 production:
   <<: *default
-  database: ore_memo_production
-  username: orememo_admin
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: db.home
-  socket: /var/lib/mysql/mysql.sock
+  host: <%= ENV['DB_HOSTNAME'] %>
+  # socket: /var/lib/mysql/mysql.sock
