@@ -107,6 +107,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.5)
@@ -276,6 +280,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   data-confirm-modal
   devise
+  dotenv-rails
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jquery-rails
