@@ -238,6 +238,10 @@ a {
 
 /* スマホ */
 @media (max-width: 599px) {
+  .memo-btns{
+    width: 40%;
+  }
+
   .new-memo-btn{
     width: 50px;
     height: 50px;
