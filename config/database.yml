@@ -53,5 +53,5 @@ production:
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
   host: <%= ENV['DB_HOSTNAME'] %>
-  socket: /tmp/mysql.sock
-  # socket: /var/run/mysqld/mysqld.sock
+  # socket: /tmp/mysql.sock
+  socket: /var/run/mysqld/mysqld.sock
