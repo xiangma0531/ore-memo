@@ -4,9 +4,6 @@ class UserMailer < ApplicationMailer
   def account_activation(user)
     @user = user
     @url = "https://#{ENV['ORE_MEMO_DOMAIN']}"
-    mail(to: @user.email, subject: 'アカウント登録が完了しました') do |format|
-      format.html { render layout: "account_activation" }
-      format.text
-    end
+    mail(to: @user.email, subject: 'アカウント登録が完了しました')
   end
 end
