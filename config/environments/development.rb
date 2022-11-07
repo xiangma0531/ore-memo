@@ -32,9 +32,20 @@ Rails.application.configure do
   config.active_storage.service = :amazon
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    address: ENV["MAIL_SERVER"],
+    port: '465',
+    domain: ENV["ORE_MEMO_DOMAIN"],
+    user_name: ENV["ORE_MEMO_MAIL_USER"],
+    password: ENV["ORE_MEMO_MAIL_PWD"],
+    authentication: :login,
+    ssl: true,
+    enable_starttls_auto: true
+  }
 
-  config.action_mailer.perform_caching = false
+  # config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
