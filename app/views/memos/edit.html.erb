@@ -8,12 +8,12 @@
 
     <div class="field">
       <%= f.label :content %><br />
-      <%= f.text_area :content, cols: "50", rows: "5" %>
+      <%= f.text_area :content, rows: "5", class: "text-area" %>
     </div>
 
     <div class="field">
       <%= f.label :image %><br />
-      <%= f.file_field :image %>
+      <%= f.file_field :image, class: "img-btn" %>
     </div>
 
     <div class="actions">

@@ -30,6 +30,12 @@ input,select{
   width: 50%;
   padding: 5px;
 }
+.text-area{
+  width: 100%;
+}
+.img-btn{
+  width: fit-content;
+}
 .actions{
   margin-top: 5%;
 }
@@ -250,5 +256,9 @@ a {
   .header-btn{
     width: auto;
     font-size: 11px;
+  }
+
+  .img-btn{
+    font-size: 10px;
   }
 }
