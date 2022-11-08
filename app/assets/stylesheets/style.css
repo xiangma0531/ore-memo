@@ -13,6 +13,9 @@ h1,h2,h3,h4,h5,h6{
   margin-block-start: 0;
   margin-block-end: 0;
 }
+ul{
+  margin-block: 0;
+}
 /* 入力系 */
 .form-box{
   border: 1px solid #666;
@@ -30,11 +33,17 @@ input,select{
   width: 50%;
   padding: 5px;
 }
+.text-area{
+  width: 100%;
+}
+.img-btn{
+  width: fit-content;
+}
 .actions{
   margin-top: 5%;
 }
 .btn{
-  width: 15%;
+  width: fit-content;
   color: #666;
   border: 1px solid #666;
   border-radius: 5px;
@@ -95,6 +104,10 @@ a {
 }
 .logout{
   background-color: #666;
+}
+.header-icon{
+  width: 35px;
+  height: 35px;
 }
 
 /*
@@ -238,6 +251,15 @@ a {
 
 /* スマホ */
 @media (max-width: 599px) {
+  .header-icon{
+    width: 26px;
+    height: 26px;
+  }
+
+  .header-btn > a{
+    font-size: 10px;
+  }
+
   .memo-btns{
     width: 40%;
   }
@@ -250,5 +272,9 @@ a {
   .header-btn{
     width: auto;
     font-size: 11px;
+  }
+
+  .img-btn{
+    font-size: 10px;
   }
 }

@@ -14,7 +14,8 @@
 </div>
 <hr>
 <div class="memo-detail">
-  <%= @memo.content %>
+  <%# <%= @memo.content %>
+  <%= safe_join(@memo.content.split("\n"),tag(:br)) %>
   <div class="memo-image">
     <% if @memo.image.attached? %>
       <hr>
