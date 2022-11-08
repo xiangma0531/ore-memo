@@ -45,9 +45,32 @@
   <hr>
   <h3>アカウントを削除する</h3>
 
-  <%= button_to "アカウント削除", registration_path(resource_name), class: "btn", data: { confirm: "アカウントを削除します。\nこれまでのデータも全て削除されます。\nよろしいですか？" }, method: :delete %>
+  <%# <%= button_to "アカウント削除", registration_path(resource_name), class: "btn", data: { confirm: "アカウントを削除します。\nこれまでのデータも全て削除されます。\nよろしいですか？" }, method: :delete %>
+  <div id="openModal" class="btn">
+    削除
+  </div>
 
   <hr>
   <%= link_to "戻る", :back %>
 
 </div>
+
+<%# 削除確認モーダルウィンドウ %>
+  <section id="modalArea" class="modalArea">
+    <div id="modalBg" class="modalBg"></div>
+    <div class="modalWrapper">
+      <div class="modalContents">
+        アカウントを削除します。<br />
+        よろしいですか？
+      </div>
+      <div class="modal-btns">
+        <%= link_to registration_path(resource_name), class: "btn modal-del-btn", method: :delete do %>
+          削除する
+        <% end %>
+        <div id="closeModal" class="btn modal-btn">
+          キャンセル
+        </div>
+      </div>
+    </div>
+  </section>
+<%# 削除確認モーダルウィンドウ %>
