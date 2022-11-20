@@ -69,6 +69,12 @@ a {
 #user_remember_me{
   width: auto;
 }
+.devise-links{
+  margin: 20px 0;
+}
+.devise-link{
+  color: black;
+}
 
 /*
 ヘッダー
