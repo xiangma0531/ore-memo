@@ -188,6 +188,9 @@ a {
 .memo-created-at{
   text-align: right;
 }
+.memo-img{
+  max-width: 80%;
+}
 
 /*
 モーダルCSS

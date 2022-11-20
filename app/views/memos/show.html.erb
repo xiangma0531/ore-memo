@@ -19,7 +19,7 @@
   <div class="memo-image">
     <% if @memo.image.attached? %>
       <hr>
-      <%= image_tag @memo.image.variant(resize: '500x500') %>
+      <%= image_tag @memo.image.variant(resize: '500x500'), class: "memo-img" %>
     <% end %>
   </div>
 </div>
