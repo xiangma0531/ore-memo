@@ -50,6 +50,7 @@ input,select{
   overflow: hidden;
   font-weight: bold;
   padding: 1%;
+  background-color: white;
 }
 .grid{
   display: flex;
