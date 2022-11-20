@@ -50,6 +50,7 @@ input,select{
   overflow: hidden;
   font-weight: bold;
   padding: 1%;
+  background-color: white;
 }
 .grid{
   display: flex;
@@ -67,6 +68,12 @@ a {
 */
 #user_remember_me{
   width: auto;
+}
+.devise-links{
+  margin: 20px 0;
+}
+.devise-link{
+  color: black;
 }
 
 /*
@@ -106,8 +113,8 @@ a {
   background-color: #666;
 }
 .header-icon{
-  width: 35px;
-  height: 35px;
+  width: 28px;
+  height: 28px;
 }
 
 /*
@@ -186,6 +193,9 @@ a {
 }
 .memo-created-at{
   text-align: right;
+}
+.memo-img{
+  max-width: 80%;
 }
 
 /*
