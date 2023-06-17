@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe "メモ投稿", type: :system do
   before do
     @user = FactoryBot.create(:user)
-    @memo = FactoryBot.create(:memo)
   end
 
   context 'メモの投稿ができるとき' do
@@ -12,7 +11,7 @@ RSpec.describe "メモ投稿", type: :system do
       # 新規投稿ページへのボタンが表示されている
       # 投稿ページに遷移する
       # フォームに情報を入力する
-      # 送信するとMemoモデルのカウントが1上がる
+      # 「作成」ボタンをクリックすると、Memoモデルのカウントが1上がる
       # ホーム画面に遷移する
       # ホーム画面に投稿したメモが表示されている
     end
@@ -22,6 +21,13 @@ RSpec.describe "メモ投稿", type: :system do
     it 'ログインしていないと新規投稿ページに遷移できない' do
       # ホーム画面に遷移する
       # 新規投稿ページへのボタンが表示されていない
+    end
+
+    it '入力項目が空のとき、メモの投稿に失敗する' do
+      # ログインする
+      # 新規投稿ページへのボタンが表示されている
+      # 投稿ページに遷移する
+      # 何も入力せずに「作成ボタン」をクリックすると、新規投稿画面に戻り、Memoモデルのカウントも増えない
     end
   end
 
