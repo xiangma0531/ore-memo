@@ -89,7 +89,7 @@ RSpec.describe "ユーザーログイン機能", type: :system do
       @user = FactoryBot.create(:user)
       # ログインページに移動する
       visit new_user_session_path
-      # すでに保存されているユーザーのemailとpasswordを入力する
+      # すでに保存されているユーザーとは異なるemailとpasswordを入力する
       fill_in 'Eメール', with: 'test'
       fill_in 'パスワード', with: 'test'
       # ログインボタンをクリックする
