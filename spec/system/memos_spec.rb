@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "メモ投稿", type: :system do
   before do
     @user = FactoryBot.create(:user)
+    @memo = FactoryBot.create(:memo)
     @image_path = Rails.root.join('public/images/dammy.png')
   end
 
@@ -15,8 +16,8 @@ RSpec.describe "メモ投稿", type: :system do
       # 投稿ページに遷移する
       visit new_memo_path
       # フォームに情報を入力する
-      fill_in 'タイトル', with: 'タイトル'
-      fill_in '内容', with: Faker::Lorem.sentence
+      fill_in 'タイトル', with: @memo.title
+      fill_in '内容', with: @memo.content
       attach_file('memo[image]', @image_path, make_visible: true)
       # 「作成」ボタンをクリックすると、Memoモデルのカウントが1上がる
       expect{
@@ -25,7 +26,10 @@ RSpec.describe "メモ投稿", type: :system do
       # ホーム画面に遷移する
       expect(current_path).to eq(root_path)
       # ホーム画面に投稿したメモが表示されている
-      expect(page).to have_content('タイトル')
+      expect(page).to have_content(@memo.title)
+      # 詳細ページに遷移すると、投稿した画像がブラウザに表示されていることを確認する
+      visit memo_path(@memo)
+      expect(page).to have_selector('img')
     end
   end
 
@@ -60,11 +64,11 @@ RSpec.describe "メモ編集", type: :system do
   before do
     @memo1 = FactoryBot.create(:memo)
     @memo2 = FactoryBot.create(:memo)
-    @image_path = Rails.root.join('public/images/dammy2.png')
+    @image_path = Rails.root.join('public/images/dammy.png')
   end
 
   context 'メモの編集ができるとき' do
-    it 'ログインしたユーザーはメモの編集できる' do
+    it 'ログインしたユーザーはメモの編集ができる' do
       # memo1を投稿したユーザーとしてログインする
       sign_in(@memo1.user)
       # 過去に投稿したメモが表示されている
@@ -78,15 +82,17 @@ RSpec.describe "メモ編集", type: :system do
       # フォームに情報を入力する
       fill_in 'タイトル', with: "編集#{@memo1.title}"
       fill_in '内容', with: "編集#{@memo1.content}"
+      attach_file('memo[image]', @image_path, make_visible: true)
       # 「作成」ボタンをクリックしても、Memoモデルのカウントは増えない
       expect{
         find('input[name="commit"]').click
       }.to change { Memo.count }.by(0)
       # 詳細画面に遷移する
       expect(current_path).to eq(memo_path(@memo1))
-      # 詳細画面に編集したメモが表示されている
+      # 詳細画面に編集したメモと画像が表示されている
       expect(page).to have_content("編集#{@memo1.title}")
       expect(page).to have_content("編集#{@memo1.content}")
+      expect(page).to have_selector('img')
     end
   end
 
