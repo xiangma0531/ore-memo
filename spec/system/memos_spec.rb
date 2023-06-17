@@ -58,20 +58,26 @@ end
 
 RSpec.describe "メモ編集", type: :system do
   before do
-    @user1 = FactoryBot.create(:user)
-    @user2 = FactoryBot.create(:user)
-    @image_path = Rails.root.join('public/images/dammy.png')
+    @memo1 = FactoryBot.create(:memo)
+    @memo2 = FactoryBot.create(:memo)
   end
 
   context 'メモの編集ができるとき' do
     it 'ログインしたユーザーはメモの編集できる' do
-      # ログインする
+      # memo1を投稿したユーザーとしてログインする
       # 過去に投稿したメモが表示されている
       # メモ編集ページに遷移する
       # フォームに情報を入力する
       # 「作成」ボタンをクリックすると、Memoモデルのカウントが1上がる
       # ホーム画面に遷移する
       # ホーム画面に編集したメモが表示されている
+    end
+  end
+
+  context 'メモの編集ができないとき' do
+    it '自分以外のユーザーが投稿したメモは編集できない' do
+      # memo2を投稿したユーザーとしてログインする
+      # memo1が投稿したメモは表示されていない
     end
   end
 
