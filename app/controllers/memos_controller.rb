@@ -1,6 +1,7 @@
 class MemosController < ApplicationController
   before_action :authenticate_user!
   before_action :set_memo, only: [:show, :edit, :update]
+  before_action :move_to_index, except: [:index, :new, :create]
 
   def index
     if user_signed_in?
@@ -48,5 +49,12 @@ class MemosController < ApplicationController
 
   def set_memo
     @memo = Memo.find(params[:id])
+  end
+
+  def move_to_index
+    @memo = Memo.find(params[:id])
+    unless current_user.id == @memo.user_id
+      redirect_to root_path
+    end
   end
 end
