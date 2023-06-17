@@ -102,6 +102,12 @@ RSpec.describe "メモ編集", type: :system do
       sign_in(@memo2.user)
       # memo1は表示されていない
       expect(page).to have_no_content(@memo1.title)
+      # memo1の詳細ページに遷移しようとしてもホーム画面に遷移する
+      visit memo_path(@memo1)
+      expect(current_path).to eq(root_path)
+      # memo1の編集ページに遷移しようとしてもホーム画面に遷移する
+      visit edit_memo_path(@memo1)
+      expect(current_path).to eq(root_path)
     end
   end
 
@@ -151,6 +157,9 @@ RSpec.describe "メモ削除", type: :system do
       sign_in(@memo2.user)
       # memo1は表示されていない
       expect(page).to have_no_content(@memo1.title)
+      # memo1の詳細ページに遷移しようとしてもホーム画面に遷移する
+      visit memo_path(@memo1)
+      expect(current_path).to eq(root_path)
     end
   end
 
