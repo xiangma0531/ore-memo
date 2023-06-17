@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :memo do
-    title { 'タイトル' }
+    title { Faker::Book.title }
     content { Faker::Lorem.sentence }
     association :user
 
