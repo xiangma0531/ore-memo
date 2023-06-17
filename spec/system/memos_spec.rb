@@ -96,9 +96,6 @@ RSpec.describe "メモ編集", type: :system do
       sign_in(@memo2.user)
       # memo1は表示されていない
       expect(page).to have_no_content(@memo1.title)
-      # memo1の詳細ページに遷移しようとしてもホーム画面に戻る
-      visit memo_path(@memo1)
-      expect(current_path).to eq(root_path)
     end
   end
 
@@ -113,22 +110,41 @@ RSpec.describe "メモ削除", type: :system do
   context 'メモの削除ができるとき' do
     it 'ログインしたユーザーはメモの編集できる' do
       # memo1を投稿したユーザーとしてログインする
+      sign_in(@memo1.user)
       # 過去に投稿したメモが表示されている
+      expect(page).to have_content(@memo1.title)
       # 詳細ページへ遷移する
+      visit memo_path(@memo1)
       # 「削除」ボタンが表示されている
+      expect(page).to have_content('削除')
       # 「削除」ボタンをクリックすると削除モーダルが出現し、「削除する」ボタンと「キャンセル」ボタンが表示される
+      find('#openModal').click
+      expect(page).to have_content('削除する')
+      expect(page).to have_content('キャンセル')
       # 「キャンセル」ボタンをクリックすると、メモは削除されず、モーダルが消える
-      # 「削除」ボタンをクリックすると、Memoモデルのカウントが1減る
+      expect{
+        find('#closeModal').click
+      }.to change { Memo.count }.by(0)
+      expect(page).to have_no_content('削除する')
+      expect(page).to have_no_content('キャンセル')
+      # モーダルの「削除」ボタンをクリックすると、Memoモデルのカウントが1減る
+      find('#openModal').click
+      expect{
+        click_on('削除する')
+      }.to change { Memo.count }.by(-1)
       # ホーム画面に遷移する
+      expect(current_path).to eq(root_path)
       # ホーム画面に削除したメモは表示されていない
+      expect(page).to have_no_content(@memo1.title)
     end
   end
 
   context 'メモの削除ができないとき' do
     it '自分以外のユーザーが投稿したメモは削除できない' do
       # memo2を投稿したユーザーとしてログインする
+      sign_in(@memo2.user)
       # memo1は表示されていない
-      # memo1の詳細ページに遷移しようとしてもホーム画面に戻る
+      expect(page).to have_no_content(@memo1.title)
     end
   end
 
