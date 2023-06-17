@@ -94,8 +94,41 @@ RSpec.describe "メモ編集", type: :system do
     it '自分以外のユーザーが投稿したメモは編集できない' do
       # memo2を投稿したユーザーとしてログインする
       sign_in(@memo2.user)
-      # memo1が投稿したメモは表示されていない
+      # memo1は表示されていない
       expect(page).to have_no_content(@memo1.title)
+      # memo1の詳細ページに遷移しようとしてもホーム画面に戻る
+      visit memo_path(@memo1)
+      expect(current_path).to eq(root_path)
+    end
+  end
+
+end
+
+RSpec.describe "メモ削除", type: :system do
+  before do
+    @memo1 = FactoryBot.create(:memo)
+    @memo2 = FactoryBot.create(:memo)
+  end
+
+  context 'メモの削除ができるとき' do
+    it 'ログインしたユーザーはメモの編集できる' do
+      # memo1を投稿したユーザーとしてログインする
+      # 過去に投稿したメモが表示されている
+      # 詳細ページへ遷移する
+      # 「削除」ボタンが表示されている
+      # 「削除」ボタンをクリックすると削除モーダルが出現し、「削除する」ボタンと「キャンセル」ボタンが表示される
+      # 「キャンセル」ボタンをクリックすると、メモは削除されず、モーダルが消える
+      # 「削除」ボタンをクリックすると、Memoモデルのカウントが1減る
+      # ホーム画面に遷移する
+      # ホーム画面に削除したメモは表示されていない
+    end
+  end
+
+  context 'メモの削除ができないとき' do
+    it '自分以外のユーザーが投稿したメモは削除できない' do
+      # memo2を投稿したユーザーとしてログインする
+      # memo1は表示されていない
+      # memo1の詳細ページに遷移しようとしてもホーム画面に戻る
     end
   end
 
