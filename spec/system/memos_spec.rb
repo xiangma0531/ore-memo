@@ -93,7 +93,9 @@ RSpec.describe "メモ編集", type: :system do
   context 'メモの編集ができないとき' do
     it '自分以外のユーザーが投稿したメモは編集できない' do
       # memo2を投稿したユーザーとしてログインする
+      sign_in(@memo2.user)
       # memo1が投稿したメモは表示されていない
+      expect(page).to have_no_content(@memo1.title)
     end
   end
 
