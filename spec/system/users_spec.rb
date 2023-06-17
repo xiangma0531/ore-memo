@@ -131,8 +131,10 @@ RSpec.describe "ユーザー情報編集機能", type: :system do
     fill_in 'パスワード', with: "edit#{@user.password}"
     fill_in 'パスワード（確認用）', with: "edit#{@user.password_confirmation}"
     fill_in '現在のパスワード', with: "#{@user.password}"
-    # 更新ボタンをクリックする
-    click_on('更 新')
+    # 編集してもUserモデルのカウントは変わらないことを確認する
+    expect{
+      find('input[name="commit"]').click
+    }.to change { User.count }.by(0)
     # ホーム画面に遷移し、変更されたユーザー名が表示されている
     expect(current_path).to eq(root_path)
     expect(page).to have_content("#{@user.name}+編集")
@@ -153,7 +155,7 @@ end
 
 RSpec.describe "ユーザー削除機能", type: :system do
 
-  it 'ユーザー情報編集後入力した情報が反映されている' do
+  it 'ユーザーを削除するとユーザーのレコードが1減り、ログイン画面に遷移する' do
     # あらかじめユーザーをDBに保存する
     @user = FactoryBot.create(:user)
     # ログインページに移動する
@@ -176,28 +178,22 @@ RSpec.describe "ユーザー削除機能", type: :system do
     expect(
       find('#user_email').value
     ).to eq(@user.email)
-    # ユーザー名・メールアドレス・パスワードを編集し、現在のパスワードを入力する
-    fill_in 'ユーザー名', with: "#{@user.name}+編集"
-    fill_in 'Eメール', with: "edit+#{@user.email}"
-    fill_in 'パスワード', with: "edit#{@user.password}"
-    fill_in 'パスワード（確認用）', with: "edit#{@user.password_confirmation}"
-    fill_in '現在のパスワード', with: "#{@user.password}"
-    # 更新ボタンをクリックする
-    click_on('更 新')
-    # ホーム画面に遷移し、変更されたユーザー名が表示されている
-    expect(current_path).to eq(root_path)
-    expect(page).to have_content("#{@user.name}+編集")
-    # ログアウト後にログインページに移動している
-    click_on('ログアウト')
+    # 削除ボタンをクリックすると、「削除する」ボタンと「キャンセル」ボタンが表示されたモーダルが出現する
+    find('#openModal').click
+    expect(page).to have_content('削除する')
+    expect(page).to have_content('キャンセル')
+    # 「キャンセル」ボタンをクリックするとユーザーは削除されず、ユーザー情報編集画面に戻る
+    find('#closeModal').click
+    expect(current_path).to eq(edit_user_registration_path)
+    # 「削除」ボタンをクリックするとユーザーは削除されてUserモデルのカウントが1減り、ログイン画面に遷移する
+    find('#openModal').click
+    expect{
+      click_on('削除する')
+    }.to change { User.count }.by(-1)
     expect(current_path).to eq(new_user_session_path)
-    # 再度ログインする際、変更前のメールアドレス・パスワードではログインできず、ログインページに戻される
+    # 再度ログインする際、削除されたユーザーのメールアドレス・パスワードではログインできず、ログインページに戻される
     sign_in(@user)
     expect(current_path).to eq(new_user_session_path)
-    # 再度ログインする際、変更後のメールアドレス・パスワードではログインでき、ホーム画面に遷移する
-    fill_in 'Eメール', with: "edit+#{@user.email}"
-    fill_in 'パスワード', with: "edit#{@user.password}"
-    find('input[name="commit"]').click
-    expect(current_path).to eq(root_path)
   end
 
 end
