@@ -55,3 +55,24 @@ RSpec.describe "メモ投稿", type: :system do
   end
 
 end
+
+RSpec.describe "メモ編集", type: :system do
+  before do
+    @user1 = FactoryBot.create(:user)
+    @user2 = FactoryBot.create(:user)
+    @image_path = Rails.root.join('public/images/dammy.png')
+  end
+
+  context 'メモの編集ができるとき' do
+    it 'ログインしたユーザーはメモの編集できる' do
+      # ログインする
+      # 過去に投稿したメモが表示されている
+      # メモ編集ページに遷移する
+      # フォームに情報を入力する
+      # 「作成」ボタンをクリックすると、Memoモデルのカウントが1上がる
+      # ホーム画面に遷移する
+      # ホーム画面に編集したメモが表示されている
+    end
+  end
+
+end
