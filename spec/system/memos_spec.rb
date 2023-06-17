@@ -60,17 +60,33 @@ RSpec.describe "メモ編集", type: :system do
   before do
     @memo1 = FactoryBot.create(:memo)
     @memo2 = FactoryBot.create(:memo)
+    @image_path = Rails.root.join('public/images/dammy2.png')
   end
 
   context 'メモの編集ができるとき' do
     it 'ログインしたユーザーはメモの編集できる' do
       # memo1を投稿したユーザーとしてログインする
+      sign_in(@memo1.user)
       # 過去に投稿したメモが表示されている
+      expect(page).to have_content(@memo1.title)
+      # 詳細ページへ遷移する
+      visit memo_path(@memo1)
+      # 「編集」ボタンが表示されている
+      expect(page).to have_content('編集')
       # メモ編集ページに遷移する
+      visit edit_memo_path(@memo1)
       # フォームに情報を入力する
-      # 「作成」ボタンをクリックすると、Memoモデルのカウントが1上がる
-      # ホーム画面に遷移する
-      # ホーム画面に編集したメモが表示されている
+      fill_in 'タイトル', with: "編集#{@memo1.title}"
+      fill_in '内容', with: "編集#{@memo1.content}"
+      # 「作成」ボタンをクリックしても、Memoモデルのカウントは増えない
+      expect{
+        find('input[name="commit"]').click
+      }.to change { Memo.count }.by(0)
+      # 詳細画面に遷移する
+      expect(current_path).to eq(memo_path(@memo1))
+      # 詳細画面に編集したメモが表示されている
+      expect(page).to have_content("編集#{@memo1.title}")
+      expect(page).to have_content("編集#{@memo1.content}")
     end
   end
 
