@@ -13,38 +13,45 @@
   </head>
 
   <body>
-    <header class="header">
-      <div class="header-left-box"><%= link_to '俺のメモ帳', root_path %></div>
-      <ul class="header-right-box">
-        <% if user_signed_in? %>
-          <li class="session-btn header-btn btn">
-            <%= link_to edit_user_registration_path do %>
-              <%= image_tag 'post.png', class: "header-icon" %><br />
-              <%= current_user.name %>
-            <% end %>
-          </li>
-          <li class="logout header-btn btn">
-            <%= link_to destroy_user_session_path, method: :delete do %>
-              <%= image_tag 'login.png', class: "header-icon" %><br />
-              ログアウト
-            <% end %>
-          </li>
-        <% else %>
-          <li class="session-btn header-btn btn">
-            <%= link_to new_user_registration_path do %>
-              <%= image_tag 'registration.png', class: "header-icon" %><br />
-              新規登録
-            <% end %>
-          </li>
-          <li class="session-btn header-btn btn">
-            <%= link_to new_user_session_path do %>
-              <%= image_tag 'login.png', class: "header-icon" %><br />
-              ログイン
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container col-8">
+          <%= link_to '俺のメモ帳', root_path, class: 'navbar-brand' %>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to edit_user_registration_path, class: 'nav-link' do %>
+                    <i class="bi bi-person"></i>
+                    <%= current_user.name %>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_user_session_path, class: "nav-link", method: :delete do %>
+                    <i class="bi bi-box-arrow-right"></i>ログアウト
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to new_user_registration_path, class: "nav-link" do %>
+                    <i class="bi bi-person-plus"></i>新規登録
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_user_session_path, class: "nav-link" do %>
+                    <i class="bi bi-door-open"></i>ログイン
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
+
     <div class="grid grid-col2">
       <div class="main">
       <%= yield %>
