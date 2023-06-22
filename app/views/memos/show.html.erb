@@ -3,12 +3,12 @@
   <div class="memo-created-at"><%= l @memo.created_at %></div>
   <% if current_user.id == @memo.user.id %>
     <div class="memo-btns">
-      <div class="memo-edit-btn btn">
-        <%= link_to '編集', edit_memo_path %>
-      </div>
-      <div id="openModal" class="btn memo-delete-btn">
+      <%= link_to edit_memo_path, class: "btn btn-dark" do %>
+        編集
+      <% end %>
+      <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#delModal">
         削除
-      </div>
+      </button>
     </div>
   <% end %>
 </div>
@@ -25,21 +25,24 @@
 </div>
 
 <%# 削除確認モーダルウィンドウ %>
-  <section id="modalArea" class="modalArea">
-    <div id="modalBg" class="modalBg"></div>
-    <div class="modalWrapper">
-      <div class="modalContents">
-        このメモを削除します。<br />
+<div class="modal fade" id="delModal" tabindex="-1" aria-labelledby="delModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="delModalLabel">削除</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        このメモを削除します<br>
         よろしいですか？
       </div>
-      <div class="modal-btns">
-        <%= link_to memo_path(@memo.id), class: "btn modal-del-btn", method: :delete do %>
+      <div class="modal-footer">
+        <%= link_to memo_path(@memo.id), class: "btn btn-dark", method: :delete do %>
           削除する
         <% end %>
-        <div id="closeModal" class="btn modal-btn">
-          キャンセル
-        </div>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 <%# 削除確認モーダルウィンドウ %>
