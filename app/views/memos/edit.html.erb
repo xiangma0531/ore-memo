@@ -1,6 +1,8 @@
-<div class="form-box">
+<h2 class="m-2">メモ編集</h2>
+<div class="form-box p-4">
   <%= form_with(model: @memo, local: true) do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
+    
     <div class="field mb-3">
       <%= f.label :title %><br />
       <%= f.text_field :title, autofucus: true, class: "form-control" %>
