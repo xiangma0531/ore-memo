@@ -51,13 +51,13 @@
       </nav>
     </header>
 
-    <div class="grid grid-col2">
-      <div class="main">
-      <%= yield %>
+    <div class="container d-flex col-8">
+      <div class="col-11 mt-3">
+        <%= yield %>
       </div>
-      <div class="right-btn">
+      <div class="col-1 position-relative">
         <% if user_signed_in? %>
-          <%= link_to new_memo_path, class: "new-memo-btn" do %>
+          <%= link_to new_memo_path, class: "btn btn-dark btn-lg position-absolute top-50 end-50 translate-middle-y" do %>
             +
           <% end %>
         <% end %>
