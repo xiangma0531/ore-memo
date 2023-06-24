@@ -18,6 +18,8 @@ ul{
 }
 /* 入力系 */
 .form-box{
+  width: 80%;
+  margin: 0 auto;
   border: 1px solid #666;
   padding: 5px;
   margin-top: 5px;
@@ -121,8 +123,8 @@ a {
 新規メモ作成ボタン
 */
 .main{
-  width: 100%;
-  height: 90vh;
+  width: 80%;
+  height: 80vh;
   overflow: scroll;
   margin: 0 auto;
 }

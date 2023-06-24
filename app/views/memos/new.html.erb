@@ -1,23 +1,25 @@
-<div class="form-box">
+<h2 class="m-2">新規メモ登録</h2>
+<div class="form-box p-4">
   <%= form_with(model: @memo, local: true) do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
-    <div class="field">
+
+    <div class="field mb-3">
       <%= f.label :title %><br />
-      <%= f.text_field :title, autofucus: true %>
+      <%= f.text_field :title, autofucus: true, class: "form-control" %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :content %><br />
-      <%= f.text_area :content, rows: "5", class: "text-area" %>
+      <%= f.text_area :content, rows: "5", class: "text-area", class: "form-control" %>
     </div>
 
-    <div class="field">
+    <div class="field mb-3">
       <%= f.label :image %><br />
-      <%= f.file_field :image, class: "img-btn" %>
+      <%= f.file_field :image, class: "img-btn", class: "form-control" %>
     </div>
 
     <div class="actions">
-      <%= f.submit "作 成", class: "btn memo-btn" %>
+      <%= f.submit "作 成", class: "btn btn-dark" %>
     </div>
   <% end %>
 </div>
