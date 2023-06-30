@@ -44,7 +44,7 @@ input,select{
 .actions{
   margin-top: 5%;
 }
-.btn{
+/* .btn{
   width: fit-content;
   color: #666;
   border: 1px solid #666;
@@ -53,7 +53,7 @@ input,select{
   font-weight: bold;
   padding: 1%;
   background-color: white;
-}
+} */
 .grid{
   display: flex;
   justify-content: space-between;
